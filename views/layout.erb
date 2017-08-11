@@ -1,10 +1,132 @@
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="refresh" content="15">
+  <title><%= @app_title %></title>
+  <meta charset="UTF-8">
+
+  <%# reload every 15 seconds %>
+  <meta http-equiv="refresh" content="15">
+
+  <%# FIXME: replace with local built bootstrap in /public/ %>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<%# FIXME: put in separate file %>
+<style>
+.ood-appkit.navbar ul.navbar-breadcrumbs > li > a, .ood-appkit.navbar ul.navbar-breadcrumbs > li + li:before {
+  float: left;
+  padding: 15px 15px;
+  font-size: 18px;
+  line-height: 20px;
+  height: 50px;
+}
+
+.ood-appkit.navbar ul.navbar-breadcrumbs > li > a:hover, .ood-appkit.navbar ul.navbar-breadcrumbs > li + li:hover:before, .ood-appkit.navbar ul.navbar-breadcrumbs > li > a:focus, .ood-appkit.navbar ul.navbar-breadcrumbs > li + li:focus:before {
+  text-decoration: none;
+}
+.ood-appkit.navbar ul.navbar-breadcrumbs > li > a > img, .ood-appkit.navbar ul.navbar-breadcrumbs > li + li:before > img {
+  display: block;
+}
+
+.ood-appkit.navbar ul.navbar-breadcrumbs {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+@media (min-width: 768px) {
+  .ood-appkit.navbar ul.navbar-breadcrumbs {
+    margin-left: -15px;
+  }
+}
+
+.ood-appkit.navbar ul.navbar-breadcrumbs > li {
+  float: left;
+}
+
+.ood-appkit.navbar ul.navbar-breadcrumbs > li + li:before {
+  padding: 15px 0;
+  content: '/';
+}
+
+.ood-appkit.navbar.navbar-default ul.navbar-breadcrumbs > li > a {
+  color: #5e5e5e;
+}
+
+.ood-appkit.navbar.navbar-default ul.navbar-breadcrumbs > li > a:hover, .ood-appkit.navbar.navbar-default ul.navbar-breadcrumbs > li > a:focus {
+  color: #777;
+  background-color: transparent;
+}
+
+.ood-appkit.navbar.navbar-default ul.navbar-breadcrumbs > li:last-child > a {
+  color: #777;
+}
+
+.ood-appkit.navbar.navbar-default ul.navbar-breadcrumbs > li:last-child > a:hover, .ood-appkit.navbar.navbar-default ul.navbar-breadcrumbs > li:last-child > a:focus {
+  color: #5e5e5e;
+}
+
+.ood-appkit.navbar.navbar-default ul.navbar-breadcrumbs > li + li:before {
+  color: #5e5e5e;
+}
+
+.ood-appkit.navbar.navbar-inverse ul.navbar-breadcrumbs > li > a {
+  color: #cccccc;
+}
+
+.ood-appkit.navbar.navbar-inverse ul.navbar-breadcrumbs > li > a:hover, .ood-appkit.navbar.navbar-inverse ul.navbar-breadcrumbs > li > a:focus {
+  color: #fff;
+  background-color: transparent;
+}
+
+.ood-appkit.navbar.navbar-inverse ul.navbar-breadcrumbs > li:last-child > a {
+  color: #fff;
+}
+
+li:last-child > a:focus {
+  color: #cccccc;
+}
+
+.ood-appkit.navbar.navbar-inverse ul.navbar-breadcrumbs > li + li:before {
+  color: #cccccc;
+}
+</style>
 </head>
 <body>
 
-  <%= yield %>
+<header>
+  <!-- navbar  -->
+  <nav class="ood-appkit navbar navbar-inverse navbar-static-top" role="navigation">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <ul class="navbar-breadcrumbs">
+          <li><a href="/pun/sys/dashboard/">OSC OnDemand</a></li>
+          <li><a href="#"><%= @title %></a></li>
+        </ul>
+      </div>
 
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse navbar-responsive-collapse">
+        <ul class="nav navbar-nav">
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+</header>
+
+<%# FIXME: add alerts for if an error occurs; show popen instead %>
+
+<div class="container" role="main">
+  <%= yield %>
+</div>
+
+<%# FIXME: replace with local built bootstrap & jquery in /public/ %>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 </body>
 </html>
