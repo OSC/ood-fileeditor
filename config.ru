@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'sinatra/reloader' if development?
 
 get '/' do
   command = "ps aux | grep App | grep -v grep"
