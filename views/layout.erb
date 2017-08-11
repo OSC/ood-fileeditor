@@ -7,7 +7,7 @@
   <%# reload every 15 seconds %>
   <meta http-equiv="refresh" content="15">
 
-  <link rel="stylesheet" type="text/css" href="<%= url("/bootstrap-3.3.7-dist/css/bootstrap.min.css")%>">
+  <link rel="stylesheet" type="text/css" href="<%= url("/bootstrap-3.3.7-dist/css/bootstrap.min.css") %>">
 
   <%= erb(:ood_styles) %>
 </head>
@@ -40,13 +40,14 @@
   </nav>
 </header>
 
-<%# FIXME: add alerts for if an error occurs; show popen instead %>
-
 <div class="container" role="main">
+  <% if @error %>
+      <div class="alert alert-danger"><%= @error %></div>
+  <% end %>
+  
   <%= yield %>
 </div>
 
-<%# FIXME: replace with local built bootstrap & jquery in /public/ %>
 <script src="<%= url("/bootstrap-3.3.7-dist/js/bootstrap.min.js") %>"></script>
 <script src="<%= url("/jquery-3.2.1/jquery-3.2.1.min.js") %>"></script>
 </body>
