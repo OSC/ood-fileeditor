@@ -3,12 +3,13 @@
 <meta http-equiv="refresh" content="15">
 </head>
 <body>
+<h1><%= @title %></h1>
 
 Output generated: <%= Time.now %>
 <pre>
-$<%= command %>
+$<%= @command %>
 
-<%= output %>
+<%= @output %>
 </pre>
 </body>
 </html>
