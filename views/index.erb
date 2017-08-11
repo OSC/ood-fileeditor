@@ -1,8 +1,31 @@
 <h1><%= @title %></h1>
 
 Output generated: <%= Time.now %>
+
 <pre>
 $ <%= @command %>
-
-<%= @output %>
 </pre>
+
+<table class="table table-bordered">
+  <tr>
+    <th>USER</th>
+    <th>PID</th>
+    <th>%CPU</th>
+    <th>%MEM</th>
+    <th>VSZ</th>
+    <th>RSS</th>
+    <th>TTY</th>
+    <th>STAT</th>
+    <th>START</th>
+    <th>TIME</th>
+    <th>COMMAND</th>
+  </tr>
+  <% @output.each do |row| %>
+  <tr>
+    <% row.each do |value| %>
+      <td><%= value %></td>
+    <% end %>
+  </tr>
+  <% end %>
+
+</table>
