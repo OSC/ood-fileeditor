@@ -9,7 +9,7 @@
 
   <link rel="stylesheet" type="text/css" href="<%= url("/bootstrap-3.3.7-dist/css/bootstrap.min.css") %>">
 
-  <%= erb(:ood_styles) %>
+  <%== erb(:ood_styles) %>
 </head>
 <body>
 
@@ -45,7 +45,7 @@
       <div class="alert alert-danger"><%= @error %></div>
   <% end %>
 
-  <%= yield %>
+  <%== yield %>
 </div>
 
 <script src="<%= url("/bootstrap-3.3.7-dist/js/bootstrap.min.js") %>"></script>

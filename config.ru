@@ -1,6 +1,9 @@
 require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'open3'
+require 'erubi'
+
+set :erb, :escape_html => true
 
 helpers do
   def parse_ps(ps_string)
