@@ -7,8 +7,7 @@ set :erb, :escape_html => true
 
 helpers do
   def parse_ps(ps_string)
-    #output_arr = ps_string.split(/\n/).map { |s| s.split(" ") }
-    ps_string.scan(/([^\s]+)\s+([^\s]+)\s+([^\s]+)\s+([^\s]+)\s+([^\s]+)\s+([^\s]+)\s+([^\s]+)\s+([^\s]+)\s+([^\s]+)\s+([^\s]+)\s+(.*)/)
+    ps_string.split("\n").map { |line| line.split(" ", 11) }
   end
 end
 
