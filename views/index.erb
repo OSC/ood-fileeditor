@@ -20,11 +20,19 @@ $ <%= @command %>
     <th>TIME</th>
     <th>COMMAND</th>
   </tr>
-  <% @output.each do |row| %>
+  <% @app_processes.each do |app| %>
   <tr>
-    <% row.each do |value| %>
-      <td><%= value %></td>
-    <% end %>
+    <td><%= app.user %></td>
+    <td><%= app.pid %></td>
+    <td><%= app.pct_cpu %></td>
+    <td><%= app.pct_mem %></td>
+    <td><%= app.vsz %></td>
+    <td><%= app.rss %></td>
+    <td><%= app.tty %></td>
+    <td><%= app.stat %></td>
+    <td><%= app.start %></td>
+    <td><%= app.time %></td>
+    <td><%= app.command %></td>
   </tr>
   <% end %>
 
