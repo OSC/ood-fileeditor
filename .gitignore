@@ -1,9 +1,6 @@
 # Ignore bundler config.
 /.bundle
 
-# keep vendor but ignore gems versioned under vendor
-vendor/bundle
-
 # Keep tmp/ but ignore files underneath
 /tmp/*
 !/tmp/.keep
