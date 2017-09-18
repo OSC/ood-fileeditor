@@ -5,6 +5,10 @@ require 'open3'
 AppProcess = Struct.new(:user, :pid, :pct_cpu, :pct_mem, :vsz, :rss, :tty, :stat, :start, :time, :command)
 
 helpers do
+  def title
+    "Currently Running OnDemand Passenger Apps"
+  end
+
   # Parse a string output from the `ps aux` command and return an array of
   # AppProcess objects, one per process
   def parse_ps(ps_string)
@@ -15,7 +19,6 @@ end
 # Define a route at the root '/' of the app.
 get '/' do
   # Define variables that will be available in the view
-  @title = "Currently Running OnDemand Passenger Apps"
   @command = "ps aux | grep App | grep -v grep"
   @app_processes = []
 
