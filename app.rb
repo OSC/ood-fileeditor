@@ -17,16 +17,16 @@ get '/' do
   # Define your variables that will be sent to the view.
   @title = "Currently Running OnDemand Passenger Apps"
   @command = "ps aux | grep App | grep -v grep"
+  @app_processes = []
 
   # Run the command and capture the stdout, stderr, and exit code as separate variables.
   stdout_str, stderr_str, status = Open3.capture3(@command)
+  if status.success?
+    @app_processes = parse_ps(stdout_str)
+  else
+    @error = "Command '#{@command}' exited with error: #{stderr_str}"
+  end
 
-  # Parse the stdout of the command and set the resulting object array to a variable.
-  @app_processes = parse_ps(stdout_str)
-
-  # If there was an error performing the command, set it to an error variable.
-  @error = stderr_str unless status.success?
-
-  # Variables will be available in views/index.erb
+  # Render the view
   erb :index
 end
