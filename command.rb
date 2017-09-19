@@ -1,3 +1,5 @@
+require 'open3'
+
 class Command
   attr_accessor :command, :processes, :error
 

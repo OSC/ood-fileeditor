@@ -1,5 +1,7 @@
-require 'open3'
+require 'erubi'
 require './command'
+
+set :erb, :escape_html => true
 
 if development?
   require 'sinatra/reloader'
