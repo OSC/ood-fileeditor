@@ -19,7 +19,7 @@ class Command
     end
   end
 
-  def to_s
+  def to_str
     command
   end
 
