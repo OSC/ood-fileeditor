@@ -9,7 +9,7 @@ class TestCommand < Minitest::Test
 efranz    30328  0.1  0.1 462148 28128 ?        Sl   20:28   0:00 Passenger RackApp: /users/PZS0562/efranz/awesim/dev/ood-example-ps
 
 EOF
-    processes = Command.new.parse_ps(output)
+    processes = Command.new.parse(output)
 
     assert_equal 1, processes.count
 

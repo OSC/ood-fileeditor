@@ -10,8 +10,8 @@ class Command
 
   # Parse a string output from the `ps aux` command and return an array of
   # AppProcess objects, one per process
-  def parse_ps(ps_string)
-    lines = ps_string.strip.split("\n")
+  def parse(output)
+    lines = output.strip.split("\n")
     lines.map do |line|
       AppProcess.new(*(line.split(" ", 11)))
     end
@@ -24,7 +24,7 @@ class Command
   def exec
     stdout_str, stderr_str, status = Open3.capture3(command)
     if status.success?
-      self.processes = parse_ps(stdout_str)
+      self.processes = parse(stdout_str)
     else
       self.error = "Command '#{command}' exited with error: #{stderr_str}"
     end
