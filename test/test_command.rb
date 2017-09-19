@@ -3,7 +3,7 @@ require 'command'
 
 class TestCommand < Minitest::Test
 
-  def test_ps_simple_parsing
+  def test_command_output_parsing
     output = <<-EOF
 
 efranz    30328  0.1  0.1 462148 28128 ?        Sl   20:28   0:00 Passenger RackApp: /users/PZS0562/efranz/awesim/dev/ood-example-ps
