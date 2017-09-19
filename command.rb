@@ -4,7 +4,7 @@ class Command
   attr_accessor :command, :processes, :error
 
   def initialize
-    @command = "ps aux | grep App | grep -v grep"
+    @command = "ps aux | grep '[A]pp'"
     @processes = []
   end
 
