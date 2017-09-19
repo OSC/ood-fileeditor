@@ -3,7 +3,7 @@
 Output generated: <%= Time.now %>
 
 <pre>
-$ <%= @command %>
+$ <%= @command.to_s %>
 </pre>
 
 <table class="table table-bordered">
@@ -20,7 +20,7 @@ $ <%= @command %>
     <th>TIME</th>
     <th>COMMAND</th>
   </tr>
-  <% @app_processes.each do |app| %>
+  <% @command.processes.each do |app| %>
   <tr>
     <td><%= app.user %></td>
     <td><%= app.pid %></td>
