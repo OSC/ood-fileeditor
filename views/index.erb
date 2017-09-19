@@ -20,7 +20,7 @@ $ <%= @command %>
     <th>TIME</th>
     <th>COMMAND</th>
   </tr>
-  <% @command.processes.each do |app| %>
+  <% @processes.each do |app| %>
   <tr>
     <td><%= app.user %></td>
     <td><%= app.pid %></td>

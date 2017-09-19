@@ -17,8 +17,7 @@ end
 # Define a route at the root '/' of the app.
 get '/' do
   @command = Command.new
-  @command.exec
-  @error = @command.error
+  @processes, @error = @command.exec
 
   # Render the view
   erb :index
