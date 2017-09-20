@@ -10,7 +10,7 @@ end
 
 helpers do
   def title
-    "Currently Running OnDemand Passenger Apps"
+    "My Passenger App Processes"
   end
 end
 
