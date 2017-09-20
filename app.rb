@@ -10,7 +10,7 @@ end
 
 helpers do
   def title
-    "My Passenger App Processes"
+    "Passenger App Processes"
   end
 end
 
