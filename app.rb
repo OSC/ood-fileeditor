@@ -9,6 +9,14 @@ if development?
 end
 
 helpers do
+  def dashboard_title
+    "Open OnDemand"
+  end
+
+  def dashboard_url
+    "/pun/sys/dashboard/"
+  end
+
   def title
     "Passenger App Processes"
   end
