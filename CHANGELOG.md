@@ -51,7 +51,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 - Fix ajax 404 response when selecting default keybinding
 
-## [1.2.0] - 2016-11-21
+## 1.2.0 - 2016-11-21
 
 - Update to Rails 4.2.7.1
 - Documentation improvements
