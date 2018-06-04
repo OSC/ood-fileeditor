@@ -3,7 +3,9 @@
 [![GitHub version](https://badge.fury.io/gh/osc%2Food-fileeditor.svg)](https://badge.fury.io/gh/osc%2Food-fileeditor)
 [![Inline docs](http://inch-ci.org/github/OSC/ood-fileeditor.svg?branch=master)](http://inch-ci.org/github/OSC/ood-fileeditor)
 
-A simple Rails web app that uses https://ace.c9.io/ for editing files. It is meant to be used in conjunction with other Open OnDemand apps, so it provides a URL pattern for opening a file to edit that is exposed via https://github.com/osc/ood_appkit#file-editor-app. Thus, other Open OnDemand apps can easily provide an "open file for editing" link.
+# NOTE: this readme is outdated
+
+A simple Sinatra web app that uses https://ace.c9.io/ for editing files. It is meant to be used in conjunction with other Open OnDemand apps, so it provides a URL pattern for opening a file to edit that is exposed via https://github.com/osc/ood_appkit#file-editor-app. Thus, other Open OnDemand apps can easily provide an "open file for editing" link.
 
 * [New Install](#new-install)
 * [Updating to a new stable version](#updating-to-a-new-stable-version)
