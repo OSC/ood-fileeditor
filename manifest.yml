@@ -1,2 +1,4 @@
-name: Passenger App Processes
-description: Display your running Passenger app proceseses in a table
+---
+name: File Editor Sinatra
+description: A text editor for files on OSC systems, being rewritten in Sinatra
+documentation: ''
