@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+    <head>
+        <title>Editor</title>
+        <link href="<%= env['SCRIPT_NAME'] %>/public/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!--<link href="<%= env['SCRIPT_NAME'] %>/public/assets/stylesheets/application.css.scss" rel="stylesheet" />-->
+        <script src="<%= env['SCRIPT_NAME'] %>/public/assets/javascripts/application.js"></script>
+    </head>
+    <body>
+        <div id="editor"></div>
+        <script src="<%= "#{env['SCRIPT_NAME']}/public/ace/1.3.3/ace.js" %>" type="text/javascript" charset="utf-8"></script>
+        <script src="<%= "#{env['SCRIPT_NAME']}/public/ace/1.3.3/ext-modelist.js" %>" type="text/javascript" charset="utf-8"></script>
+        <script>
+            var editor = ace.edit("editor");
+            editor.setTheme("ace/theme/twilight");
+            editor.session.setMode("ace/mode/javascript");
+        </script>
+    </body>
+</html>
