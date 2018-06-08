@@ -2,5 +2,5 @@ source "https://rubygems.org"
 
 gem "sinatra"
 gem "sinatra-contrib"
-gem "erubi"
+#gem 'ood_appkit', '~> 1.0'
 

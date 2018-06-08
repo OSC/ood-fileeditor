@@ -1,14 +1,75 @@
-require 'erubi'
+require 'sinatra'
+require 'erb'
+require 'pathname'
+#require 'dir'
+#require 'ood-appkit'
 
-set :erb, :escape_html => true
-
-if development?
-  require 'sinatra/reloader'
-  also_reload './command.rb'
+# This might get dangerous, but it's the only way I can see to deliver the js files without Sinatra 404ing
+get '/public/*' do
+  send_file './public/' + params[:splat][0]
 end
 
-# Define a route at the root '/' of the app.
+get '' do
+  redirect to('/edit/'), 301
+end
+
 get '/' do
+  redirect to('/edit/'), 301
+end
+
+get '/edit' do
+  redirect to('/edit/'), 301
+end
+
+# sends the file as plaintext
+get '/file/*' do
+  send_file '/' + params[:splat][0]
+end
+
+get '/edit/*' do
+
+  path = params[:splat][0] || "/"
+  path = "/" + path unless path.start_with?("/")
+
+  @pathname = Pathname.new(path)
+  if @pathname.file? && @pathname.readable?
+    fileinfo = %x[ file -b --mime-type #{@pathname.to_s.shellescape} ]
+    if fileinfo =~ /text\/|\/(x-empty|(.*\+)?xml)/ || params.has_key?(:force)
+      @editor_content = ""
+      #@file_api_url = OodAppkit.files.api(path: @pathname).to_s
+      @file_api_url = env['SCRIPT_NAME'] + '/file' + path
+    else
+      @invalid_file_type = fileinfo
+      erb :"404.html"
+    end
+  elsif @pathname.directory?
+    @directory_content = Dir.glob(@pathname + "*").sort
+    @file_edit_url = Pathname.new(env['SCRIPT_NAME']).join('edit')
+  else
+    @not_found = true
+    erb :"404.html"
+  end
+
   # Render the view
-  erb :application
+  erb :"app2.html"
+end
+
+get '/pages/index' do
+  erb :"index.html"
+end
+
+get '/pages/about' do
+  erb :"about.html"
+end
+
+not_found do
+  erb :"404.html"
+end
+
+error 500 do
+  erb :"500.html"
+end
+
+error 422 do
+  erb :"422.html"
 end

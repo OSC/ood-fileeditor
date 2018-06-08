@@ -2,7 +2,6 @@ GEM
   remote: https://rubygems.org/
   specs:
     backports (3.8.0)
-    erubi (1.6.1)
     multi_json (1.12.1)
     rack (1.6.5)
     rack-protection (1.5.3)
@@ -26,7 +25,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  erubi
   sinatra
   sinatra-contrib
 
