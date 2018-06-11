@@ -1,8 +1,29 @@
 require 'sinatra'
+require './fileserve.rb'
 require 'erb'
 require 'pathname'
 #require 'dir'
 #require 'ood-appkit'
+
+set :erb, :layout => :"layout.html"
+
+# fileserve = FileServer.new
+# fileserve.run!
+register Sinatra::FileAPI
+
+# get '/fs/*' do
+#   fileserve.call(env)
+# end
+
+# put '/fs/*' do
+#   fileserve.call(env)
+# end
+
+before do
+  @env = env
+end
+
+serve '/fs/*'
 
 # This might get dangerous, but it's the only way I can see to deliver the js files without Sinatra 404ing
 get '/public/*' do
@@ -37,21 +58,25 @@ get '/edit/*' do
     if fileinfo =~ /text\/|\/(x-empty|(.*\+)?xml)/ || params.has_key?(:force)
       @editor_content = ""
       #@file_api_url = OodAppkit.files.api(path: @pathname).to_s
-      @file_api_url = env['SCRIPT_NAME'] + '/file' + path
+      #borrowing from the running file explorer app
+      #will probably break on a different system
+      @file_api_url = '/pun/sys/files/api/v1/fs' + path
     else
       @invalid_file_type = fileinfo
-      erb :"404.html"
+      # erb :"404.html"
+      halt 404
     end
   elsif @pathname.directory?
     @directory_content = Dir.glob(@pathname + "*").sort
     @file_edit_url = Pathname.new(env['SCRIPT_NAME']).join('edit')
   else
     @not_found = true
-    erb :"404.html"
+    # erb :"404.html"
+    halt 404
   end
 
   # Render the view
-  erb :"app2.html"
+  erb :"edit.html"
 end
 
 get '/pages/index' do
