@@ -5,7 +5,11 @@ require 'pathname'
 #require 'dir'
 #require 'ood-appkit'
 
-set :erb, :layout => :"layout.html"
+set :erb, :layout => :"layout.html" # use ERB as template engine and keeps the top bar
+set :escape_html, true    # safety first!
+set :static, true   # in case I feel like making this modular, set this explicitly
+set :public_folder, './public'  # same thing
+set :views, './views'   # yeah
 
 # fileserve = FileServer.new
 # fileserve.run!
@@ -23,12 +27,12 @@ before do
   @env = env
 end
 
-serve '/fs/*'
+# serve '/fs/*'
 
 # This might get dangerous, but it's the only way I can see to deliver the js files without Sinatra 404ing
-get '/public/*' do
-  send_file './public/' + params[:splat][0]
-end
+# get '/public/*' do
+#   send_file './public/' + params[:splat][0]
+# end
 
 get '' do
   redirect to('/edit/'), 301
@@ -43,9 +47,9 @@ get '/edit' do
 end
 
 # sends the file as plaintext
-get '/file/*' do
-  send_file '/' + params[:splat][0]
-end
+# get '/file/*' do
+#   send_file '/' + params[:splat][0]
+# end
 
 get '/edit/*' do
 
