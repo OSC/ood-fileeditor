@@ -99,6 +99,12 @@ $( document ).ready(function () {
             }
             editor.setKeyboardHandler( binding );
         };
+        
+        // Change tab spacing
+        $( "#tabspacing" ).change(function() {
+           editor.getSession().setTabSize( $( "#tabspacing option:selected" ).val() );
+           setUserPreference( 'tabsize', $( "#tabspacing option:selected" ).val() );
+        });
 
         // Change the font size
         $( "#fontsize" ).change(function() {
@@ -169,9 +175,11 @@ $( document ).ready(function () {
         };
 
         function setOptions() {
+            $( "#tabspacing" ).val(getUserPreference('tabsize') || "4");
+            editor.getSession().setTabSize( $( "#tabspacing option:selected" ).val() );
             $( "#keybindings" ).val(getUserPreference('keybindings') || "default");
             setKeyBinding();
-            $( "#fontsize" ).val(getUserPreference('fontsize') || '12px');
+            $( "#fontsize" ).val(getUserPreference('fontsize') || "12px");
             editor.setFontSize( $( "#fontsize option:selected" ).val() );
             $( "#mode" ).val(getUserPreference('mode') || "text");
             editor.session.setMode( "ace/mode/" + $( "#mode option:selected" ).val() );
