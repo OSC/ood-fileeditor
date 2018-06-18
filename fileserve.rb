@@ -1,3 +1,5 @@
+# my lame attempt at imitating the File Explorer API
+
 require 'sinatra/base'
 # require 'IO'
 

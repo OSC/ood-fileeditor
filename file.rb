@@ -1,3 +1,6 @@
+# swiped from OOD Appkit
+# not currently being used
+
 require 'addressable'
 
   # A generic class used to handle URLs for an app

@@ -13,7 +13,7 @@ set :views, './views'   # yeah
 
 # fileserve = FileServer.new
 # fileserve.run!
-register Sinatra::FileAPI
+# register Sinatra::FileAPI
 
 # get '/fs/*' do
 #   fileserve.call(env)
@@ -23,9 +23,9 @@ register Sinatra::FileAPI
 #   fileserve.call(env)
 # end
 
-before do
-  @env = env
-end
+# before do
+#   @env = env
+# end
 
 # serve '/fs/*'
 
