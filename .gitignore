@@ -28,7 +28,7 @@
 # /.env.production
 #/.env.local
 
-#/vendor/bundle
+/vendor/bundle
 
 #/.htaccess
 
