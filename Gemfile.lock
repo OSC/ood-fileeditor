@@ -15,3 +15,9 @@ PLATFORMS
 
 DEPENDENCIES
   sinatra
+<<<<<<< HEAD
+=======
+
+BUNDLED WITH
+   1.12.5
+>>>>>>> 1db03216aed9e8b39b4423ca4e9bfa6b43be4d96

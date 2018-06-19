@@ -17,10 +17,17 @@ Gem::Specification.new do |s|
   s.homepage = "http://rack.github.io/"
   s.licenses = ["MIT"]
   s.rubyforge_project = "rack"
+<<<<<<< HEAD
   s.rubygems_version = "2.4.5.4"
   s.summary = "a modular Ruby webserver interface"
 
   s.installed_by_version = "2.4.5.4" if s.respond_to? :installed_by_version
+=======
+  s.rubygems_version = "2.4.5"
+  s.summary = "a modular Ruby webserver interface"
+
+  s.installed_by_version = "2.4.5" if s.respond_to? :installed_by_version
+>>>>>>> 1db03216aed9e8b39b4423ca4e9bfa6b43be4d96
 
   if s.respond_to? :specification_version then
     s.specification_version = 4
