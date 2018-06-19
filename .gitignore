@@ -27,11 +27,7 @@
 
 # /.env.production
 #/.env.local
-<<<<<<< HEAD
 /vendor/bundle
-=======
-#/vendor/bundle
->>>>>>> 1db03216aed9e8b39b4423ca4e9bfa6b43be4d96
 
 #/.htaccess
 
