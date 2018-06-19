@@ -1,25 +1,22 @@
 # -*- encoding: utf-8 -*-
-# stub: sinatra 1.4.8 ruby lib
 
 Gem::Specification.new do |s|
   s.name = "sinatra"
   s.version = "1.4.8"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.require_paths = ["lib"]
   s.authors = ["Blake Mizerany", "Ryan Tomayko", "Simon Rozet", "Konstantin Haase"]
   s.date = "2017-01-30"
   s.description = "Sinatra is a DSL for quickly creating web applications in Ruby with minimal effort."
   s.email = "sinatrarb@googlegroups.com"
   s.extra_rdoc_files = ["README.de.md", "README.es.md", "README.fr.md", "README.hu.md", "README.ja.md", "README.ko.md", "README.md", "README.pt-br.md", "README.pt-pt.md", "README.ru.md", "README.zh.md", "LICENSE"]
-  s.files = ["LICENSE", "README.de.md", "README.es.md", "README.fr.md", "README.hu.md", "README.ja.md", "README.ko.md", "README.md", "README.pt-br.md", "README.pt-pt.md", "README.ru.md", "README.zh.md"]
+  s.files = ["README.de.md", "README.es.md", "README.fr.md", "README.hu.md", "README.ja.md", "README.ko.md", "README.md", "README.pt-br.md", "README.pt-pt.md", "README.ru.md", "README.zh.md", "LICENSE"]
   s.homepage = "http://www.sinatrarb.com/"
   s.licenses = ["MIT"]
   s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Sinatra", "--main", "README.rdoc", "--encoding=UTF-8"]
-  s.rubygems_version = "2.4.5"
+  s.require_paths = ["lib"]
+  s.rubygems_version = "2.0.14.1"
   s.summary = "Classy web-development dressed in a DSL"
-
-  s.installed_by_version = "2.4.5" if s.respond_to? :installed_by_version
 
   if s.respond_to? :specification_version then
     s.specification_version = 4
