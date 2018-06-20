@@ -1,5 +1,5 @@
 require 'sinatra'
-require './fileserve.rb'
+#require './fileserve.rb'
 require 'erb'
 require 'pathname'
 #require 'dir'
@@ -34,6 +34,13 @@ set :views, './views'   # yeah
 #   send_file './public/' + params[:splat][0]
 # end
 
+helpers do
+  def files_api_url(path)
+    files_url = ENV['OOD_FILES_URL'] || "/pun/sys/files"
+    "#{files_url}/api/v1/fs#{path}"
+  end
+end
+
 get '' do
   redirect to('/edit/'), 301
 end
@@ -64,7 +71,7 @@ get '/edit/*' do
       #@file_api_url = OodAppkit.files.api(path: @pathname).to_s
       #borrowing from the running file explorer app
       #will probably break on a different system
-      @file_api_url = '/pun/sys/files/api/v1/fs' + path
+      @file_api_url = files_api_url(path)
     else
       @invalid_file_type = fileinfo
       # erb :"404.html"
