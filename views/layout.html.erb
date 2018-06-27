@@ -1,13 +1,15 @@
 <!DOCTYPE html>
+<html lang="en">
     <head>
-        <meta charset="UTF-8">
-        
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
         <title>Editor</title>
-        
+
         <!-- right now this favicon doesn't work because Sinatra (or maybe Rack) generates HTML around it -->
         <!-- ideally, we could import the OOD Appkit gem and get the system-wide favicon, but there are dependency conflicts -->
         <link href="<%= env['SCRIPT_NAME'] %>/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        
+
         <!-- PRESERVER ORDERING ON THESE! -->
         <!-- bootstrap-sprockets stylesheet? -->
         <!-- ood_appkit/bootstrap-overrides stylesheet? from configuration.rb in OOD Appkit and bash env var overrides-->
@@ -17,48 +19,46 @@
         <!-- font-awesome-sprockets stylesheet? -->
         <!--<link rel="stylesheet" href="<%= env['SCRIPT_NAME'] %>/public/assets/stylesheets/font-awesome.min.css" />-->
         <link rel="stylesheet" href="<%= env['SCRIPT_NAME'] %>/assets/stylesheets/application.css" />
-        
+
         <script src="<%= env['SCRIPT_NAME'] %>/jquery-3.3.1/jquery.min.js"></script>
         <!--<script src="<%= env['SCRIPT_NAME'] %>/public/assets/javascripts/jquery_ujs.js"></script>-->
         <script src="<%= env['SCRIPT_NAME'] %>/bootstrap-3.3.7/js/bootstrap.min.js"></script>
         <script src="<%= env['SCRIPT_NAME'] %>/assets/javascripts/application.js"></script>
         <script src="<%= env['SCRIPT_NAME'] %>/assets/javascripts/ood_ace.js"></script>
     </head>
-    
+
     <body>
-        <header>
+        <header id="header">
             <!-- navbar  -->
             <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
                 <div class="container-fluid">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <ul class="nav navbar-nav">
-                            <li>
+                        <!-- <ul class="nav navbar-nav"> -->
+                            <!-- <li> -->
                                 <button type="button" class="btn btn-primary btn-xs" id="save-button">
                                     <span class="glyphicon glyphicon-save" id="save-icon" aria-hidden="true"></span> Save
                                 </button>
-                            </li>
-                            <li>
-                                <span class="label"><%= @pathname %></span>
+                            <!-- </li> -->
+                            <!-- <li> -->
+                                <span id="path" class="label"><%= @pathname %></span>
                                 <span id="loading-notice" style="display: none;">
                                     [ <span class="glyphicon glyphicon-refresh glyphicon-spin" id="loading-notice" aria-hidden="true"></span> Loading ]
                                 </span>
-                            </li>
-                        </ul>
+                            <!-- </li> -->
+                        <!-- </ul> -->
+                        <button class="navbar-toggle btn-primary btn-xs" type="button" data-toggle="collapse" data-target="#controls" aria-expanded="false">
+                            <span class="sr-only">Toggle controls</span>
+                            <span class="glyphicon glyphicon-cog"></span>
+                        </button>
                     </div>
-                    
+
                     <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse navbar-responsive-collapse">
+                    <div id="controls" class="navbar-collapse collapse" aria-expanded="false">
                         <ul class="nav navbar-nav navbar-right form-inline">
                             <li class="">
-                                <label class="control-label" for="tabspacing">Tab Spacing</label>
                                 <div class="form-group">
+                                    <label class="control-label hidden-sm hidden-md" for="tabspacing">Tab Spacing</label>
                                     <select class="form-control input-xs" id="tabspacing">
                                         <option value="2">2</option>
                                         <option value="4">4</option>
@@ -68,9 +68,9 @@
                                     </select>
                                 </div>
                             </li>
-                            <li class="hidden-xs hidden-sm hidden-md">
-                                <label class="control-label" for="keybindings">Key Bindings</label>
+                            <li class="">
                                 <div class="form-group">
+                                    <label class="control-label hidden-sm hidden-md" for="keybindings">Key Bindings</label>
                                     <select class="form-control input-xs" id="keybindings">
                                         <option value="default">Default</option>
                                         <option value="ace/keyboard/vim">Vim</option>
@@ -78,9 +78,9 @@
                                     </select>
                                 </div>
                             </li>
-                            <li class="hidden-xs">
-                                <label class="control-label hidden-sm hidden-md" for="fontsize">Font Size</label>
+                            <li class="">
                                 <div class="form-group">
+                                    <label class="control-label hidden-sm hidden-md" for="fontsize">Font Size</label>
                                     <select class="form-control input-xs" id="fontsize">
                                         <option value="8px">8px</option>
                                         <option value="9px">9px</option>
@@ -102,9 +102,9 @@
                                     </select>
                                 </div>
                             </li>
-                            <li class="hidden-xs">
-                            <label class="control-label hidden-sm hidden-md" for="mode">Mode</label>
+                            <li class="">
                                 <div class="form-group">
+                                    <label class="control-label hidden-sm hidden-md" for="mode">Mode</label>
                                     <select class="form-control input-xs" id="mode">
                                         <option value="abap">ABAP</option>
                                         <option value="abc">ABC</option>
@@ -238,9 +238,9 @@
                                     </select>
                                 </div>
                             </li>
-                            <li class="hidden-xs">
-                                <label class="control-label hidden-sm hidden-md" for="theme">Theme</label>
+                            <li class="">
                                 <div class="form-group">
+                                    <label class="control-label hidden-sm hidden-md" for="theme">Theme</label>
                                     <select class="form-control input-xs" id="theme">
                                         <optgroup label="Bright">
                                             <option value="ace/theme/chrome">Chrome</option>
@@ -283,10 +283,9 @@
                                     </select>
                                 </div>
                             </li>
-                            <li class="hidden-xs">
-                                <label class="control-label hidden-sm" for="wordwrap">Word Wrap</label>
-                                <label class="control-label hidden-md hidden-lg" for="wordwrap">Wrap</label>
+                            <li class="">
                                 <div class="form-group">
+                                    <label class="control-label hidden-sm hidden-md" for="wordwrap">Word Wrap</label>
                                     <input type="checkbox" id="wordwrap" value="">
                                 </div>
                             </li>
@@ -295,9 +294,9 @@
                 </div><!-- /.container-fluid -->
             </nav>
         </header>
-    
-        <div class="container" role="main">
-    
+
+        <div role="main">
+
       <%# if alert %>
           <!--<div class="alert alert-danger alert-dismissible" role="alert">
             <button type="button" class="close" data-dismiss="alert">
@@ -307,7 +306,7 @@
             <%#= alert %>
           </div>-->
       <%# end %>
-    
+
       <%# if notice %>
           <!--<div class="alert alert-success" role="alert">
             <button type="button" class="close" data-dismiss="alert">
@@ -317,17 +316,18 @@
             <%#= notice %>
           </div>-->
       <%# end %>
-    
+
         <%= yield %>
-    
+
         </div><!-- /.container -->
-    
-        <footer>
-            <div class="container">
-                <hr>
-                <p>&copy; Ohio Supercomputer Center <%= DateTime.now.year %></p>
-            </div>
-        </footer>
-        
+
+        <!-- <footer class="page-footer">
+            <nav class="">
+                <div class="container">
+                    <p>&copy; Ohio Supercomputer Center <%= DateTime.now.year %></p>
+                </div>
+            </nav>
+        </footer> -->
+
     </body>
 </html>
