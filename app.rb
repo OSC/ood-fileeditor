@@ -74,16 +74,12 @@ get '/edit/*' do
       @file_api_url = files_api_url(path)
     else
       @invalid_file_type = fileinfo
-      # erb :"404.html"
-      halt 404
     end
   elsif @pathname.directory?
     @directory_content = Dir.glob(@pathname + "*").sort
     @file_edit_url = Pathname.new(env['SCRIPT_NAME']).join('edit')
   else
     @not_found = true
-    # erb :"404.html"
-    halt 404
   end
 
   # Render the view
