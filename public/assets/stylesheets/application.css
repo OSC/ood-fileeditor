@@ -1,17 +1,3 @@
-/* html {
-    height: 100%;
-}
-
-body {
-    height: 100%;
-} */
-
-#editor {
-    width: 100%
-    /* temporary until file gets loaded to hide the error message behind */
-    height: 1000px;
-}
-
 .navbar {
   margin: 0;
   min-height: 0;
@@ -24,6 +10,10 @@ body {
 .navbar li {
   margin: 0 3px 0 3px;
   color: white;
+}
+
+#loading-notice {
+    color: white;
 }
 
 .navbar-toggle {
