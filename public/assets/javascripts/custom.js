@@ -13,4 +13,7 @@ $(document).ready(function() {
     $(".collapse").on('hidden.bs.collapse', function(){
         aceHeightAdjust();
     });
+    $('#file-path-btn').click(function() {
+        $('#path-dummy').tooltip('toggle');
+    });
 });
