@@ -34,10 +34,8 @@ get '/edit/*' do
     fileinfo = %x[ file -b --mime-type #{@pathname.to_s.shellescape} ]
     if fileinfo =~ /text\/|\/(x-empty|(.*\+)?xml)/ || params.has_key?('force')
       @editor_content = ""
-      #@file_api_url = OodAppkit.files.api(path: @pathname).to_s
-      #borrowing from the running file explorer app
-      #will probably break on a different system
       @file_api_url = files_api_url(path)
+      @filename = @pathname.basename
     else
       @invalid_file_type = fileinfo
     end
@@ -53,13 +51,13 @@ get '/edit/*' do
 end
 
 not_found do
-  erb 404.to_sym
+  erb :"404", layout: false
 end
 
 error 500 do
-  erb 404.to_sym
+  erb :"500"
 end
 
 error 422 do
-  erb 422.to_sym
+  erb :"422"
 end

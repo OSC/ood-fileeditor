@@ -4,7 +4,9 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <title>Editor</title>
+        <title>
+            Editor<% if @editor_content %><%= " - " + @filename.to_s %><% end %>
+        </title>
 
         <!-- right now this favicon doesn't work because Sinatra (or maybe Rack) generates HTML around it -->
         <!-- ideally, we could import the OOD Appkit gem and get the system-wide favicon, but there are dependency conflicts -->
@@ -34,13 +36,17 @@
                 <div class="container-fluid">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">
-                            <button type="button" class="btn btn-primary btn-xs" id="save-button">
-                                <span class="glyphicon glyphicon-save" id="save-icon" aria-hidden="true"></span> Save
-                            </button>
-                            <span id="path" class="label"><%= @pathname %></span>
-                            <span id="loading-notice" style="display: none;">
-                                [ <span class="glyphicon glyphicon-refresh glyphicon-spin" id="loading-notice" aria-hidden="true"></span> Loading ]
-                            </span>
+                        <button id="save-button" type="button" class="btn btn-primary btn-xs">
+                            <span id="save-icon" class="glyphicon glyphicon-save" aria-hidden="true"></span> Save
+                        </button>
+                        <span id="path" class="label hidden-md hidden-sm hidden-xs"><%= @pathname %></span>
+                        <button id="file-path-btn" type="button" class="btn btn-primary btn-xs hidden-lg">
+                            <span id="file-path-icon" class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                        </button>
+                        <span id="path-dummy" title="<%= @pathname %>" data-toggle="tooltip" data-placement="right"></span>
+                        <span id="loading-notice" style="display: none;">
+                            [ <span class="glyphicon glyphicon-refresh glyphicon-spin" id="loading-notice" aria-hidden="true"></span> Loading ]
+                        </span>
                         <button class="navbar-toggle btn-primary btn-xs" type="button" data-toggle="collapse" data-target="#controls" aria-expanded="false">
                             <span class="sr-only">Toggle controls</span>
                             <span class="glyphicon glyphicon-cog"></span>
@@ -290,6 +296,7 @@
                             <li class="">
                                 <div class="form-group">
                                     <label class="control-label hidden-sm hidden-md" for="wordwrap">Word Wrap</label>
+                                    <label class="control-label hidden-xs hidden-lg" for="wordwrap">Wrap</label>
                                     <div class="form-group">
                                         <input type="checkbox" id="wordwrap" value="">
                                     </div>
