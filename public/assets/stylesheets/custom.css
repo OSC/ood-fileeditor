@@ -1,0 +1,22 @@
+/*custom Bootstrap overrides from OOD Appkit converted from Sass*/
+/*see ood_appkit/lib/ood_appkit/configuration.rb*/
+/*can be used to cusomize other items*/
+
+.navbar-inverse {
+    background-color: #53565a;
+}
+
+.navbar-inverse > a {
+    color: #fff;
+}
+
+.navbar-inverse > a:hover {
+    color: #ddd;
+}
+
+/* navbar_inverse_bg: '#53565a',
+navbar_inverse_link_color: '#fff',
+navbar_inverse_color: '$navbar-inverse-link-color',
+navbar_inverse_link_hover_color: 'darken($navbar-inverse-link-color, 20%)',
+navbar_inverse_brand_color: '$navbar-inverse-link-color',
+navbar_inverse_brand_hover_color: '$navbar-inverse-link-hover-color' */
