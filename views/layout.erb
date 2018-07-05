@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="The Ohio Supercomputer Center" />
 
         <title>
             Editor<% if @editor_content %><%= " - " + @filename.to_s %><% end %>
@@ -314,14 +315,6 @@
         <div role="main">
         <%= yield %>
         </div><!-- /.container -->
-
-        <!-- <footer class="page-footer">
-            <nav class="">
-                <div class="container">
-                    <p>&copy; Ohio Supercomputer Center <%= DateTime.now.year %></p>
-                </div>
-            </nav>
-        </footer> -->
 
     </body>
 </html>
