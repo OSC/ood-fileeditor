@@ -9,8 +9,6 @@
             Editor<% if @editor_content %><%= " - " + @filename.to_s %><% end %>
         </title>
 
-        <!-- right now this favicon doesn't work because Sinatra (or maybe Rack) generates HTML around it -->
-        <!-- ideally, we could import the OOD Appkit gem and get the system-wide favicon, but there are dependency conflicts -->
         <link href="<%= favicon_url() %>" rel="shortcut icon" type="image/x-icon" />
 
         <!-- PRESERVE ORDERING ON THESE! -->
