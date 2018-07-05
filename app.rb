@@ -10,6 +10,10 @@ helpers do
     files_url = ENV['OOD_FILES_URL'] || "/pun/sys/files"
     "#{files_url}/api/v1/fs#{path}"
   end
+  
+  def favicon_url
+    ENV['OOD_FAVICON_URL'] || env['SCRIPT_NAME'] + "/favicon.ico"
+  end
 end
 
 get '' do
