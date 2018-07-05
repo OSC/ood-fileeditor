@@ -42,26 +42,36 @@ get '/edit/*' do
             @filename = @pathname.basename
         else
             @invalid_file_type = fileinfo
+            halt 415
         end
     elsif @pathname.directory?
         @directory_content = Dir.glob(@pathname + "*").sort
         @file_edit_url = Pathname.new(env['SCRIPT_NAME']).join('edit')
+        halt 422
     else
         @not_found = true
+        halt 404
     end
 
     # Render the view
-    erb :edit
+    erb :edit, layout: false
 end
 
+# general 404 and file/directory not found with /edit in path
 not_found do
     erb :"404", layout: false
 end
 
-error 500 do
-    erb :"500"
+# non-plaintext file
+error 415 do
+    erb :"415", layout: false
 end
 
+# path is a directory
 error 422 do
-    erb :"422"
+    erb :"422", layout: false
+end
+
+error 500 do
+    erb :"500", layout: false
 end
