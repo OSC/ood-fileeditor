@@ -9,7 +9,7 @@ A simple Sinatra web app that uses https://ace.c9.io/ for editing files. It is m
 * [Updating to a new stable version](#updating-to-a-new-stable-version)
 * [Usage](#usage)
 
-![File Explorer Interface](docs/img/file-editor-example.png)
+![File Explorer Interface](doc/img/file-editor-example.png)
 
 ## New Install
 
