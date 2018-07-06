@@ -1,4 +1,5 @@
 ---
-name: File Editor Sinatra
-description: A text editor for files on OSC systems, being rewritten in Sinatra
+name: File Editor
+description: A text editor for files on OnDemand systems
+icon: fa://edit
 documentation: ''
