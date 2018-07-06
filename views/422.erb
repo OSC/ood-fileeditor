@@ -50,6 +50,7 @@
             list-style: none;
             padding: 0;
             border-radius: 4px;
+            font-size: 12px;
         }
 
         li:first-child {
@@ -64,7 +65,7 @@
 
         li {
             border: 1px solid #ddd;
-            padding: 10px 15px;
+            padding: 5px 15px;
             margin-bottom: -1px;
         }
 
@@ -74,19 +75,39 @@
             border: 1px solid #ccc;
             border-radius: 4px;
         }
+
+        #dir-btn {
+            color: blue;
+            border: 1px solid;
+            border-radius: 4px;
+            padding-bottom: 2px;
+        }
         </style>
+        <script>
+            function toggleDir() {
+                var dc = document.getElementById("contents");
+                var btn = document.getElementById("dir-btn");
+                if (dc.style.display === "none") {
+                    dc.style.display = "block";
+                    btn.innerHTML = "&#8593;"
+                } else {
+                    dc.style.display = "none";
+                    btn.innerHTML = "&#8595;"
+                }
+            }
+        </script>
     </head>
     <body>
         <div class="dialog">
             <h1>Cannot edit a directory.</h1>
             <p>The requested path is a directory and cannot be edited.</p>
             <p class="bs-pre"><%= @pathname %></p>
-            <p>Here is a rudimentary list of the directory's contents:</p>
-            <ul>
+            <p>Toggle rudimentary list of the directory's contents: <button id="dir-btn" onclick="toggleDir()" style="color: blue;">&#8595;</button></p>
+            <ul id="contents" style="display: none;">
                 <%= "<li><a href='#{File.join(@file_edit_url, @pathname.dirname)}'>..</a></li>" unless @pathname.to_s == "/" %>
                 <% @directory_content.each do |path| %>
                     <li>
-                        <%= "<a href='#{File.join(@file_edit_url, path)}'>#{Pathname.new(path).basename}</a>" %>
+                        <a href="<%= File.join(@file_edit_url, path) %>"><%= Pathname.new(path).basename %><%= "/" if Pathname.new(path).directory? %></a>
                     </li>
                 <% end %>
             </ul>

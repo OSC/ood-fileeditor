@@ -2,7 +2,7 @@ require 'sinatra'
 require 'erb'
 require 'pathname'
 
-set :erb, :layout => :layout # use ERB as template engine and keeps the top bar
+set :layout, false
 set :escape_html, true    # safety first!
 
 helpers do
@@ -54,24 +54,25 @@ get '/edit/*' do
     end
 
     # Render the view
-    erb :edit, layout: false
+    erb :edit
 end
 
 # general 404 and file/directory not found with /edit in path
 not_found do
-    erb :"404", layout: false
+    erb :"404"
 end
 
 # non-plaintext file
 error 415 do
-    erb :"415", layout: false
+    erb :"415"
 end
 
 # path is a directory
 error 422 do
-    erb :"422", layout: false
+    erb :"422"
 end
 
+# server error
 error 500 do
-    erb :"500", layout: false
+    erb :"500"
 end
