@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [1.4.0] - 2018-07-06
+### Changed
+- Entire app converted from Rails to Sinatra.
+  [#77](https://github.com/OSC/ood-fileeditor/issues/77)
+- Updated to Ace Editor 1.3.3.
+- Modified error pages.
+- Improved navbar for different screen widths.
+
+### Added
+- Ability to change tab spacing.
+  [#79](https://github.com/OSC/ood-fileeditor/issues/79)
+
 ## [1.3.3] - 2018-01-03
 ### Changed
 - Modified `CHANGELOG.md` formatting.
