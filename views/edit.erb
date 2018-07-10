@@ -38,7 +38,7 @@
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">
                         <button id="save-button" type="button" class="btn btn-primary btn-xs">
-                            <span id="save-icon" class="glyphicon glyphicon-save" aria-hidden="true"></span> Save
+                            <span id="save-icon" class="glyphicon glyphicon-save" aria-hidden="true"></span><span> <%= if @pathname.writable?; " Save"; else; "(read only)"; end %></span>
                         </button>
                         <span id="path" class="label hidden-md hidden-sm hidden-xs"><%= @pathname %></span>
                         <button id="file-path-btn" type="button" class="btn btn-primary btn-xs hidden-lg">
@@ -320,7 +320,7 @@
                 <h4><pre><%= @pathname %></pre></h4>
                 <div id="ajaxErrorResponse"></div>
             </div>
-            <div id="editor"></div>
+            <div id="editor" class="<%= @pathname.writable? ? "" : "readonly" %>"></div>
         </div>
     </body>
 </html>
