@@ -4,6 +4,7 @@ $( document ).ready(function () {
     // ex. for directory views
     if ( $( '#editor' ).length ) {
         $( '#error' ).hide();
+        var readOnly = $( '#editor').hasClass("readonly");
         // Initialize the ace editor
         var editor = ace.edit("editor");
         setOptions();
@@ -52,14 +53,14 @@ $( document ).ready(function () {
             // Disable the save button after the initial load
             // Modifying settings and adding data to the editor makes the UndoManager "dirty"
             // so we have to explicitly re-disable it on page ready.
-            $( "#save-button" ).prop("disabled", true);
+            setSaveButtonState();
 
             // Set the caret at inside the editor on load.
             editor.focus();
         };
 
         function setSaveButtonState() {
-            $( "#save-button" ).prop("disabled", editor.session.getUndoManager().isClean());
+            $( "#save-button" ).prop("disabled", (editor.session.getUndoManager().isClean() || readOnly) );
         };
 
         function setBeforeUnloadState() {
@@ -70,7 +71,7 @@ $( document ).ready(function () {
             setSaveButtonState();
 
             window.onbeforeunload = function (e) {
-                if (!editor.session.getUndoManager().isClean()) {
+                if (!editor.session.getUndoManager().isClean() && !readOnly) {
                     return 'You have unsaved changes!';
                 } else {
                     // return nothing
@@ -99,7 +100,7 @@ $( document ).ready(function () {
             }
             editor.setKeyboardHandler( binding );
         };
-        
+
         // Change tab spacing
         $( "#tabspacing" ).change(function() {
            editor.getSession().setTabSize( $( "#tabspacing option:selected" ).val() );
@@ -154,7 +155,7 @@ $( document ).ready(function () {
                         }, 2000);
 
                         editor.session.getUndoManager().markClean();
-                        $( "#save-button" ).prop("disabled", editor.session.getUndoManager().isClean());
+                        setSaveButtonState();
                         setBeforeUnloadState();
                     },
                     error: function (request, status, error) {

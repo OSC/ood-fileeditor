@@ -48,6 +48,8 @@ get '/edit/*' do
         @directory_content = Dir.glob(@pathname + "*").sort
         @file_edit_url = Pathname.new(env['SCRIPT_NAME']).join('edit')
         halt 422
+    elsif @pathname.file? && !@pathname.readable?
+        halt 403
     else
         @not_found = true
         halt 404
@@ -60,6 +62,11 @@ end
 # general 404 and file/directory not found with /edit in path
 not_found do
     erb :"404"
+end
+
+# user does not have read permissions for file
+error 403 do
+    erb :"403"
 end
 
 # non-plaintext file
