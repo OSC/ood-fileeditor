@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [1.4.0] - 2018-07-06
+## [1.4.0] - 2018-07-16
 ### Changed
 - Entire app converted from Rails to Sinatra.
   [#77](https://github.com/OSC/ood-fileeditor/issues/77)
@@ -18,6 +18,17 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Ability to change tab spacing.
   [#79](https://github.com/OSC/ood-fileeditor/issues/79)
+
+### Fixed
+- Issuing :w in Vim mode doesn't save the file
+  [#78](https://github.com/OSC/ood-fileeditor/issues/78)
+  Though not officially supported by Ace, this implementation works
+- Low-hanging letters get cut off in toolbar
+  [#75](https://github.com/OSC/ood-fileeditor/issues/75)
+- Long file path names hide the toolbar controls
+  [#44](https://github.com/OSC/ood-fileeditor/issues/44)
+  Smaller screens will see a blue info button to toggle the file path
+  Very long paths on even large screens will instead expand the toolbar, no longer hiding the controls
 
 ## [1.3.3] - 2018-01-03
 ### Changed
