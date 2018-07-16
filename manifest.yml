@@ -1,6 +1,5 @@
 ---
-name: osc-editor
-description: |-
-  A text editor for files on OSC systems
-documentation: |-
-
+name: File Editor
+description: A text editor for files on OnDemand systems
+icon: fa://edit
+documentation: ''

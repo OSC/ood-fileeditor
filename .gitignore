@@ -8,8 +8,8 @@
 /.bundle
 
 # Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-journal
+#/db/*.sqlite3
+#/db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
@@ -17,17 +17,17 @@
 !/tmp/.keep
 
 # Ignore any user pre-compiled assets
-/public/assets
+#/public/assets
 
 # data to store simulations and file uploads for development
-/data
+#/data
 
 # files used for deployment should not be versioned
-/public/.htaccess
+#/public/.htaccess
 
 # /.env.production
-/.env.local
+#/.env.local
 /vendor/bundle
 
-/.htaccess
+#/.htaccess
 

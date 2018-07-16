@@ -1,4 +1,8 @@
-# This file is used by Rack-based servers to start the application.
+require 'sinatra'
+require 'dotenv'
 
-require ::File.expand_path('../config/environment',  __FILE__)
-run Rails.application
+require './app'
+
+Dotenv.load
+Dotenv.load '/etc/ood/config/apps/file-editor/env' if ENV['PASSENGER_ENV'] == 'production'
+run Sinatra::Application
