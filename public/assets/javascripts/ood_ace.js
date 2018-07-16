@@ -2,7 +2,7 @@ $( document ).ready(function () {
     // get whether document should be read-only
     var readOnly = $( '#editor').hasClass("readonly");
     // Initialize the ace editor
-    editor = ace.edit("editor");
+    var editor = ace.edit("editor");
     setOptions();
     $( "#loading-notice" ).toggle();
     var loading = true;
