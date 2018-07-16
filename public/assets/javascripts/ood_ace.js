@@ -115,6 +115,18 @@ $( document ).ready(function () {
         if (binding == "default") {
             binding = null;
         }
+
+        // There doesn't seem to be a documented way to implement the :w
+        // command of Vim in Ace, so here's a cheaty way
+        if (binding == "ace/keyboard/vim") {
+            ace.config.loadModule("ace/keybinding/vim", function(m) {
+                var VimApi = require("ace/keyboard/vim").CodeMirror.Vim
+                VimApi.defineEx("write", "w", function(cm, input) {
+                    saveDoc();
+                })
+            })
+        }
+
         editor.setKeyboardHandler( binding );
     };
 
@@ -154,9 +166,7 @@ $( document ).ready(function () {
         setUserPreference( 'wordwrap', $( "#wordwrap" ).is(':checked') );
     });
 
-    // Save button onclick handler
-    // sends the content to the cloudcmd api via PUT request
-    $( "#save-button" ).click(function() {
+    function saveDoc() {
         if (apiUrl !== "") {
             $( "#save-button" ).prop("disabled", true);
             toggleSaveSpinner();
@@ -183,6 +193,12 @@ $( document ).ready(function () {
         } else {
             console.log("Can't save this!");
         };
+    };
+
+    // Save button onclick handler
+    // sends the content to the cloudcmd api via PUT request
+    $( "#save-button" ).click(function() {
+        saveDoc();
     });
 
     // Automatically Sets the dropdown and mode to the modelist option
