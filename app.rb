@@ -12,7 +12,7 @@ helpers do
     end
 
     def favicon_url
-        ENV['OOD_FAVICON_URL'] || env['SCRIPT_NAME'] + "/favicon.ico"
+        "#{ENV['OOD_PUBLIC_URL'] || '/public'}/favicon.ico"
     end
 end
 
