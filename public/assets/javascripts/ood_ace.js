@@ -2,10 +2,8 @@ $( document ).ready(function () {
     // get whether document should be read-only
     var readOnly = $( '#editor').hasClass("readonly");
     // Initialize the ace editor
-    var editor = ace.edit("editor");
-    ge = editor;
+    editor = ace.edit("editor");
     setOptions();
-    if (readOnly) { editor.setReadOnly(true); };
     $( "#loading-notice" ).toggle();
     var loading = true;
     // Load the file via ajax
@@ -15,9 +13,8 @@ $( document ).ready(function () {
         dataType: "text",
         success: function (data) {
             editorContent = data;
-            $("#editor").text(editorContent);
-            editor.destroy();
-            editor = ace.edit("editor");
+            editor.getSession().setValue(editorContent);
+            if (readOnly) editor.setReadOnly(true);
             initializeEditor();
             setModeFromModelist();
             $( "#loading-notice" ).toggle();
