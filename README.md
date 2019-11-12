@@ -1,3 +1,5 @@
+## Moved to https://github.com/OSC/ondemand/tree/master/apps/file-editor
+
 # OOD File Editor
 
 [![GitHub version](https://badge.fury.io/gh/osc%2Food-fileeditor.svg)](https://badge.fury.io/gh/osc%2Food-fileeditor)
